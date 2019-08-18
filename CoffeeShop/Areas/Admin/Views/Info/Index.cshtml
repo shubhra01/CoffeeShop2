@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Model.Info>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+   
+}
+
+<h2 style="text-align:center">Chỉnh sửa ảnh giới thiệu</h2>
+
+<table class="table" style="width:95%; margin:0 auto; border:solid">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody >
+        @foreach (var item in Model) {
+        <tr >
+            <td id="imageInfo" >
+               <img width="50%" height="50%" src="@Html.DisplayFor(modelItem => item.ImagePath)" />
+            </td>
+
+            <td style="float:right; margin-right:80px;">
+                <button type="button" class="btn btn-danger" style="background-color:aqua"> <a type="button" asp-action="Edit" asp-route-id="@item.Id">Edit</a></button>
+
+                <button type="button" class="btn" style="background-color:burlywood"><a asp-action="Details" asp-route-id="@item.Id">Details</a> </button>
+                <button type="button" class="btn" style="background-color:darkgreen"> <a asp-action="Delete" asp-route-id="@item.Id">Delete</a></button>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
